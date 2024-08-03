@@ -1,0 +1,4 @@
+baseURL = 'https://manishdwibedy.org/'
+languageCode = 'en-us'
+title = 'Techy Stuff'
+theme = 'hugo-theme-tailwind'

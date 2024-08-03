@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Techy Stuff</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Techy Stuff</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Hugo Author)</managingEditor>
+    <webMaster>user@example.com (Hugo Author)</webMaster>
+    <lastBuildDate>Sat, 03 Aug 2024 10:49:28 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>http://localhost:1313/posts/first/</link>
+      <pubDate>Sat, 03 Aug 2024 10:49:28 +0530</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/first/</guid>
+      <description>This is a sampe post</description>
+    </item>
+  </channel>
+</rss>
