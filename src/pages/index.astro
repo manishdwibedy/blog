@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const title = "Blog";
+const description = "Insights on Backend Engineering, AI/ML, and Full Stack Development";
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="gradient-bg min-h-[40vh] flex items-center justify-center text-white pt-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+      <p class="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">
+        Insights on Backend Engineering, AI/ML, and Full Stack Development
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden card-hover">
+            {post.data.heroImage && (
+              <div class="h-48 overflow-hidden">
+                <img 
+                  src={post.data.heroImage} 
+                  alt={post.data.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="text-sm text-gray-500">
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </span>
+                {post.data.tags.length > 0 && (
+                  <span class="ml-auto bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">
+                    {post.data.tags[0]}
+                  </span>
+                )}
+              </div>
+              <h2 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href={`/blog/${post.slug}/`} class="hover:text-primary transition-colors">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                {post.data.description}
+              </p>
+              <a 
+                href={`/blog/${post.slug}/`} 
+                class="inline-flex items-center text-primary hover:underline font-medium"
+              >
+                Read more
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      {posts.length === 0 && (
+        <div class="text-center py-12">
+          <i class="fas fa-pen-nib text-6xl text-gray-300 mb-4"></i>
+          <p class="text-xl text-gray-600">No blog posts yet. Stay tuned!</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+

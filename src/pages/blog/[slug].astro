@@ -1,0 +1,85 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const title = post.data.title;
+const description = post.data.description;
+---
+
+<Layout title={title} description={description}>
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="gradient-bg min-h-[30vh] flex items-center justify-center text-white pt-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      {post.data.tags.length > 0 && (
+        <div class="flex justify-center gap-2 mb-4">
+          {post.data.tags.map((tag: string) => (
+            <span class="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">{post.data.title}</h1>
+      <div class="flex items-center justify-center gap-4 text-sm md:text-base opacity-90">
+        <span>{post.data.author}</span>
+        <span>•</span>
+        <span>
+          {post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Content Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {post.data.heroImage && (
+        <div class="mb-8 rounded-lg overflow-hidden shadow-lg">
+          <img 
+            src={post.data.heroImage} 
+            alt={post.data.title}
+            class="w-full h-auto"
+          />
+        </div>
+      )}
+      
+      <article class="prose prose-lg max-w-none">
+        <Content />
+      </article>
+      
+      <!-- Back to Blog Link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a 
+          href="/blog/" 
+          class="inline-flex items-center text-primary hover:underline font-medium"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>
+          Back to Blog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+

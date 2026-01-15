@@ -1,0 +1,53 @@
+---
+---
+
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="text-xl font-bold text-gray-900">Manish Dwibedy</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+        <a href="/blog" class="text-primary font-semibold border-b-2 border-primary transition-colors">Blog</a>
+        <a href="https://manishd.in#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
+        <a href="https://manishd.in#skills" class="text-gray-700 hover:text-primary transition-colors">Skills</a>
+        <a href="https://manishd.in#experience" class="text-gray-700 hover:text-primary transition-colors">Experience</a>
+        <a href="https://manishd.in#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+      </div>
+      <div class="md:hidden">
+        <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary" aria-label="Open main menu">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/" class="block px-3 py-2 text-gray-700 hover:text-primary">Home</a>
+      <a href="/blog" class="block px-3 py-2 text-primary font-semibold">Blog</a>
+      <a href="https://manishd.in#about" class="block px-3 py-2 text-gray-700 hover:text-primary">About</a>
+      <a href="https://manishd.in#skills" class="block px-3 py-2 text-gray-700 hover:text-primary">Skills</a>
+      <a href="https://manishd.in#experience" class="block px-3 py-2 text-gray-700 hover:text-primary">Experience</a>
+      <a href="https://manishd.in#contact" class="block px-3 py-2 text-gray-700 hover:text-primary">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>
+

@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Manish Dwibedy's Blog - Insights on Backend Engineering, AI/ML, and Full Stack Development" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} | Manish Dwibedy Blog</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body class="font-inter bg-gray-50">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Markdown content styles */
+  .prose h1 {
+    @apply text-4xl font-bold text-gray-900 mb-4;
+  }
+  
+  .prose h2 {
+    @apply text-2xl font-semibold text-gray-900 mt-8 mb-4;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-semibold text-gray-900 mt-6 mb-3;
+  }
+  
+  .prose p {
+    @apply text-gray-700 leading-relaxed mb-4;
+  }
+  
+  .prose ul {
+    @apply list-disc list-inside mb-4 text-gray-700;
+  }
+  
+  .prose ol {
+    @apply list-decimal list-inside mb-4 text-gray-700;
+  }
+  
+  .prose code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm text-primary;
+  }
+  
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-gray-600 my-4;
+  }
+  
+  .prose img {
+    @apply rounded-lg shadow-md my-6;
+  }
+</style>
+
