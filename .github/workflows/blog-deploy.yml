@@ -42,12 +42,6 @@ jobs:
         # Astro build creates the 'dist' folder
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        # This step helps GitHub understand it's a static site, not Jekyll
-        with:
-          static_site_generator: astro
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
