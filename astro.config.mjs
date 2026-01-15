@@ -5,5 +5,6 @@ export default defineConfig({
   integrations: [tailwind()],
   site: 'https://blog.manishd.in',
   base: '/',
+  outDir: './dist',
 });
 
