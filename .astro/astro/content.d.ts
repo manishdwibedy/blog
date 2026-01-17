@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"fb-utis-engagement.md": {
+	id: "fb-utis-engagement.md";
+  slug: "fb-utis-engagement";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "rag-basics.md": {
 	id: "rag-basics.md";
   slug: "rag-basics";
