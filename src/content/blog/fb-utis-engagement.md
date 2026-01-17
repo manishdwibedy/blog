@@ -44,12 +44,16 @@ This is the "meat" of the 2026 update. The model doesn't just sit at the end; it
 
 Meta’s A/B tests on 10M+ users provided the "Proof of Concept" for this value-based approach.
 
-* **Metric Shift:** * **+5.2% Total Engagement:** This is the "Holy Grail"—proving that quality-based ranking actually increases time spent.
-* **-6.84% Low Survey Ratings:** A massive win for user sentiment.
 
+* **Total Engagement:** **+5.2%**
+    The "Holy Grail"—proving that quality-based ranking actually increases time spent on the platform.
 
-* **Integrity Bonus:** Better interest matching led to a **-0.34% drop in integrity violations**.
-* **Insight:** When users see what they *actually* care about, they are less likely to encounter (or engage with) toxic or "borderline" content.
+* **Low Survey Ratings:** **-6.84%**
+    A massive win for user sentiment and overall satisfaction.
+
+* **Integrity Violations:** **-0.34%**
+    Better interest matching led to a natural drop in violations. 
+    > **Insight:** When users see what they *actually* care about, they are less likely to encounter (or engage with) toxic or "borderline" content.
 
 ## 6. The 2026 Horizon: Data Sparsity & LLMs
 
