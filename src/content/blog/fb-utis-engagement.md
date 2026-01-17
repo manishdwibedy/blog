@@ -7,7 +7,7 @@ tags: ["MachineLearning", "RecommendationSystems", "MetaEngineering","UserExperi
 featured: true
 ---
 
-
+# High Level Overview
 
 ## 1. Beyond the "Click": Why Watch Time Isn't Enough
 
@@ -44,16 +44,13 @@ This is the "meat" of the 2026 update. The model doesn't just sit at the end; it
 
 Meta’s A/B tests on 10M+ users provided the "Proof of Concept" for this value-based approach.
 
+### Key Performance Metrics
 
-* **Total Engagement:** **+5.2%**
-    The "Holy Grail"—proving that quality-based ranking actually increases time spent on the platform.
+* **Total Engagement (+5.2%):** The "Holy Grail"—proving that quality-based ranking increases time spent.
+* **Low Survey Ratings (-6.84%):** A massive win for user sentiment and overall satisfaction.
+* **Integrity Violations (-0.34%):** Better interest matching led to a natural drop in violations.
 
-* **Low Survey Ratings:** **-6.84%**
-    A massive win for user sentiment and overall satisfaction.
-
-* **Integrity Violations:** **-0.34%**
-    Better interest matching led to a natural drop in violations. 
-    > **Insight:** When users see what they *actually* care about, they are less likely to encounter (or engage with) toxic or "borderline" content.
+**Core Insight:** When users see what they *actually* care about, they are less likely to encounter (or engage with) toxic or "borderline" content.
 
 ## 6. The 2026 Horizon: Data Sparsity & LLMs
 
@@ -62,7 +59,11 @@ The blog ends with the "Hard Problems" still being solved.
 * **The Cold Start Problem:** How do you predict "True Interest" for a user who hasn't watched anything yet? Meta is focusing on **Sparse Engagement History**—using cross-domain signals (like what they do on Facebook Groups) to seed the Reels engine.
 * **LLMs and Semantic IDs:** Moving forward, Meta is exploring **Large Language Models** to move beyond hashtags. LLMs can "watch" a video and understand that a "mood" is "calm/meditative" vs "energetic/chaotic," allowing for much deeper personalization than simple category tags.
 
+<br/>
+<hr style="height:2px; border:none; color:#333; background-color:#333;">
+<br/>
 
+> Incase you are interersted to look into it deeper, let us cover each of them in much more details. Please feel free to skip it if you want to have an overview and don't need to dive much deeper.
 
 ## 1. Beyond the "Click": Why Watch Time Isn't Enough
 
@@ -172,13 +173,34 @@ In the final ranking stage, the system has already narrowed the pool down to a f
 
 The most impressive part of the 2026 update is how UTIS influences the **Retrieval** stage—the "Big Net" that catches the first 1,000 candidates.
 
-* **Interest Profile Reconstruction:** Meta uses aggregated survey data to "re-build" what the system thinks you like. If you consistently rate "Woodworking" 5/5 but only watch "Prank" videos because they are loud, the system will proactively source more woodworking candidates even if they haven't gone viral.
-* **Knowledge Distillation (The Engineering Secret):** * **The Challenge:** Retrieval models use simple architectures (like Two-Tower networks) to keep latency low. They can't afford to run the complex logic of the UTIS Perception Layer.
-* **The Solution:** Meta uses the "smart" LSR UTIS model as a **Teacher** and the "fast" Retrieval model as a **Student**.
-* **The Process:** The student model is trained to mimic the UTIS scores of the teacher. This "distills" the sophisticated interest-matching logic into a fast, deployable format.
+### Key Engineering Concepts
+
+* **Interest Profile Reconstruction:** Meta uses aggregated survey data to "re-build" what the system thinks you like. 
+
+If you rate "Woodworking" 5/5 but watch "Prank" videos because they are loud, the system proactively sources woodworking content regardless of virality.
 
 
-* **Junior Insight:** Imagine a professor (LSR) writing a complex textbook and a student (Retrieval) making a set of "Cheat Sheet" notes. The student doesn't know *why* the math works as well as the professor does, but they can give you the right answer in half the time.
+
+
+
+* **Knowledge Distillation:** Let's check their Engineering Secret
+
+Let's Bridge the sophistication and scale using the 3-Step Distillation Pipeline.
+
+  1. **The Challenge:** 
+  
+  Retrieval models (like Two-Tower networks) are too simple to run the complex UTIS Perception Layer logic.
+
+  2. **The Solution:** 
+  
+  Meta uses the "smart" LSR UTIS model as a **Teacher** and the "fast" Retrieval model as a **Student**.
+
+  3. **The Process:** 
+  
+  The student mimics the teacher's scores, distilling sophisticated matching logic into a fast, deployable format.
+
+> **Junior Insight:** Imagine a professor (LSR) writing a complex textbook and a student (Retrieval) making "Cheat Sheet" notes. The student doesn't know *why* the math works as well as the professor, but they can give you the right answer in half the time.
+
 
 ### The Ecosystem Shift
 
@@ -258,13 +280,45 @@ By integrating the Perception Layer across the entire funnel—from the split-se
 
 ### Executive Summary: The Technical "TL;DR"
 
-| Feature | Old System (Heuristic-Based) | New System (UTIS Model) |
-| --- | --- | --- |
-| **Primary Signal** | Implicit (Watch time, Likes) | Explicit (Survey-verified Interest) |
-| **Accuracy** | 48.3% Precision | 71.5% Accuracy |
-| **Funnel Strategy** | Late-stage filtering only | Deep integration via Knowledge Distillation |
-| **User Impact** | "Pop" viral content dominant | High-quality, Niche content boost |
-| **Ecosystem** | Optimized for Attention | Optimized for Long-term Utility |
+
+<div style="overflow-x:auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <table style="border-collapse: collapse; width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+    <thead>
+      <tr style="background-color: #2c3e50; color: white; text-align: left;">
+        <th style="padding: 15px; border-bottom: 2px solid #1a252f;">Feature</th>
+        <th style="padding: 15px; border-bottom: 2px solid #1a252f;">Old System (Heuristic-Based)</th>
+        <th style="padding: 15px; border-bottom: 2px solid #1a252f;">New System (UTIS Model)</th>
+      </tr>
+    </thead>
+    <tbody style="background-color: #ffffff; color: #333;">
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 12px 15px; font-weight: 600; background-color: #f8f9fa;">Primary Signal</td>
+        <td style="padding: 12px 15px;">Implicit (Watch time, Likes)</td>
+        <td style="padding: 12px 15px;">Explicit (Survey-verified Interest)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee; background-color: #fdfdfd;">
+        <td style="padding: 12px 15px; font-weight: 600; background-color: #f8f9fa;">Accuracy</td>
+        <td style="padding: 12px 15px; color: #e67e22;">48.3% Precision</td>
+        <td style="padding: 12px 15px; color: #27ae60; font-weight: bold;">71.5% Accuracy</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 12px 15px; font-weight: 600; background-color: #f8f9fa;">Funnel Strategy</td>
+        <td style="padding: 12px 15px;">Late-stage filtering only</td>
+        <td style="padding: 12px 15px;">Deep integration via Knowledge Distillation</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee; background-color: #fdfdfd;">
+        <td style="padding: 12px 15px; font-weight: 600; background-color: #f8f9fa;">User Impact</td>
+        <td style="padding: 12px 15px;">”Pop” viral content dominant</td>
+        <td style="padding: 12px 15px;">High-quality, Niche content boost</td>
+      </tr>
+      <tr>
+        <td style="padding: 12px 15px; font-weight: 600; background-color: #f8f9fa;">Ecosystem</td>
+        <td style="padding: 12px 15px;">Optimized for Attention</td>
+        <td style="padding: 12px 15px; font-weight: bold; color: #2980b9;">Optimized for Long-term Utility</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### Key Insights for the Engineering Community
 
